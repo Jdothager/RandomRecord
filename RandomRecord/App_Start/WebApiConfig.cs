@@ -5,7 +5,7 @@ using System.Net.Http.Headers;
 using System.Web.Http;
 
 
-namespace RandomRecord
+namespace RandomRecords
 {
     public static class WebApiConfig
     {

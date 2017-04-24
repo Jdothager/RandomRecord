@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using RandomRecord.Models;
+using RandomRecords.Models;
 
-namespace RandomRecord.Controllers
+namespace RandomRecords.Controllers
 {
     public class UserController : ApiController
     {

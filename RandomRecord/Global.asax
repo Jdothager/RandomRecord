@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="RandomRecord.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="RandomRecords.Global" Language="C#" %>

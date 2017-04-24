@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace RandomRecord.Models
+namespace RandomRecords.Models
 {
     public class User
     {

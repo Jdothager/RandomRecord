@@ -9,7 +9,7 @@ using System.Text;
 
 
 
-namespace RandomRecord.Models
+namespace RandomRecords.Models
 {
     public class MaleFirst_2010_2015
     {
