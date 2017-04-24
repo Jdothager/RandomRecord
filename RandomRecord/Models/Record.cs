@@ -6,13 +6,13 @@ using System.Web;
 
 namespace RandomRecords.Models
 {
-    public class User
+    public class Record
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Year { get; set; }
 
-        public User(Dictionary<string, int> dict, int randomNumber)
+        public Record(Dictionary<string, int> dict, int randomNumber)
         {
             // TODO add random year generator
             Year = 2000;

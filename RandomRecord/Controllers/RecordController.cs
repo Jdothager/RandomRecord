@@ -8,13 +8,13 @@ using RandomRecords.Models;
 
 namespace RandomRecords.Controllers
 {
-    public class UserController : ApiController
+    public class RecordController : ApiController
     {
-        public IEnumerable<User> Get()
+        public IEnumerable<Record> Get()
         {
-            UserList usersList = new UserList();
+            RecordList RecordsList = new RecordList();
 
-            return usersList.GetList();
+            return RecordsList.GetList();
         }
 
     }

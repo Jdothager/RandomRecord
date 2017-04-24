@@ -6,11 +6,11 @@ using System.Web;
 
 namespace RandomRecords.Models
 {
-    public class UserList
+    public class RecordList
     {
-        // creates a class to build a list of users and returns that list
+        // creates a class to build a list of Records and returns that list
 
-        public IEnumerable<User> GetList()
+        public IEnumerable<Record> GetList()
         {
             // create dictionary --- TEMP ---
             MaleFirst_2010_2015 dataGetter = new MaleFirst_2010_2015();
@@ -26,14 +26,14 @@ namespace RandomRecords.Models
             // create random object
             Random randomObject = new Random();
 
-            List<User> usersList = new List<User>();
+            List<Record> RecordsList = new List<Record>();
             for (int i = 0; i < 1; i++)
             {
-                User extraBody = new User(dict, randomObject.Next(0, totalWeight));
-                usersList.Add(extraBody);
+                Record extraBody = new Record(dict, randomObject.Next(0, totalWeight));
+                RecordsList.Add(extraBody);
             }
 
-            return usersList;
+            return RecordsList;
         }
     }
 }
