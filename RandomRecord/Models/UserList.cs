@@ -27,7 +27,7 @@ namespace RandomRecords.Models
             Random randomObject = new Random();
 
             List<User> usersList = new List<User>();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 1; i++)
             {
                 User extraBody = new User(dict, randomObject.Next(0, totalWeight));
                 usersList.Add(extraBody);
