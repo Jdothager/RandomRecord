@@ -12,9 +12,9 @@ namespace RandomRecords.Controllers
     {
         public IEnumerable<Record> Get()
         {
-            RecordList RecordsList = new RecordList();
+            ResultCreator RecordsList = new ResultCreator();
 
-            return RecordsList.GetList();
+            return RecordsList.GetRecords();
         }
 
     }

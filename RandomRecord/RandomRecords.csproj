@@ -131,7 +131,7 @@
     <Compile Include="Models\MaleFirst_2010_2015.cs" />
     <Compile Include="Models\NameField.cs" />
     <Compile Include="Models\Record.cs" />
-    <Compile Include="Models\RecordList.cs" />
+    <Compile Include="Models\ResultCreator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

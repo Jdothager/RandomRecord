@@ -6,11 +6,11 @@ using System.Web;
 
 namespace RandomRecords.Models
 {
-    public class RecordList
+    public class ResultCreator
     {
         // creates a class to build a list of Records and returns that list
 
-        public IEnumerable<Record> GetList()
+        public IEnumerable<Record> GetRecords()
         {
             // create dictionary --- TEMP ---
             MaleFirst_2010_2015 dataGetter = new MaleFirst_2010_2015();
