@@ -29,15 +29,21 @@ namespace RandomRecords.Models
 
         public Record GetRecord(RecordRepository CsvData)
         {
-            // access dictionary
-            Dictionary<string, int> dataDict = CsvData.MaleFirst_2010_2015;
+            // get gender and access dictionary
+            Dictionary<string, int> dataDict = new Dictionary<string, int>();
+            string gender = GetGender();
+            if (gender == "female")
+            {
+                dataDict = CsvData.FemaleFirst_2010_2015;
+            }
+            else
+            {
+                dataDict = CsvData.MaleFirst_2010_2015;
+
+            }
 
             // get total weight from the dictionary
-            int totalWeight = 0;
-            foreach (KeyValuePair<string, int> entry in dataDict)
-            {
-                totalWeight = totalWeight + entry.Value;
-            }
+            int totalWeight = GetTotalWeight(dataDict);
 
             Record record = new Record();
             record.FirstName = Randomizer(dataDict, RandomObject.Next(0, totalWeight));
@@ -63,6 +69,30 @@ namespace RandomRecords.Models
             }
 
             return selectedEntry;
+        }
+
+        private string GetGender()
+        {
+            int coin = RandomObject.Next(0, 2);
+            if (coin % 2 == 0)
+            {
+                return "female";
+            }
+            else
+            {
+                return "male";
+            }
+        }
+
+        private int GetTotalWeight(Dictionary<string, int> dataDict)
+        {
+            // get total weight from the dictionary
+            int totalWeight = 0;
+            foreach (KeyValuePair<string, int> entry in dataDict)
+            {
+                totalWeight = totalWeight + entry.Value;
+            }
+            return totalWeight;
         }
     }
 }

@@ -55,9 +55,8 @@ namespace RandomRecords.Models
             return dict;
         }
 
-        /*
-         * Parse a single line of a CSV file into a string array
-         */
+
+        // Parse a single line of a CSV file into a string array
         private static string[] CSVRowToStringArray(string row, char fieldSeparator = ',', char stringSeparator = '\"')
         {
             bool isBetweenQuotes = false;
