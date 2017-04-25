@@ -10,6 +10,6 @@ namespace RandomRecords.Models
     {
         public string firstname { get; set; }
         public string lastname { get; set; }
-        public int Year { get; set; }
+        public string dob { get; set; }
     }
 }

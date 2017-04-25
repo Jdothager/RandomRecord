@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 
@@ -30,6 +31,7 @@ namespace RandomRecords.Models
         public Record GetRecord(RecordRepository CsvData)
         {
             Record record = new Record();
+            record.dob = GetBirthDateTime();
             record.firstname = GetFirstName(CsvData);
             record.lastname = GetLastName(CsvData);
 
@@ -53,6 +55,17 @@ namespace RandomRecords.Models
             }
 
             return selectedEntry;
+        }
+
+        private string GetBirthDateTime()
+        {
+            DateTime from1950 = new DateTime(1950, 1, 1, 0, 0, 0);
+            DateTime to2000 = new DateTime(2000, 12, 31, 0, 0, 0);
+            TimeSpan yearRange = to2000 - from1950;
+            DateTime randTimeSpan = from1950 + new TimeSpan((long)(RandomObject.NextDouble() * yearRange.Ticks));
+            string formatted = string.Format("{0:yyyy-MM-dd HH:mm:ss}", randTimeSpan);
+
+            return formatted;
         }
 
         private string GetGender()
