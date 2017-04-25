@@ -29,25 +29,9 @@ namespace RandomRecords.Models
 
         public Record GetRecord(RecordRepository CsvData)
         {
-            // get gender and access dictionary
-            Dictionary<string, int> dataDict = new Dictionary<string, int>();
-            string gender = GetGender();
-            if (gender == "female")
-            {
-                dataDict = CsvData.FemaleFirst_2010_2015;
-            }
-            else
-            {
-                dataDict = CsvData.MaleFirst_2010_2015;
-
-            }
-
-            // get total weight from the dictionary
-            int totalWeight = GetTotalWeight(dataDict);
-
             Record record = new Record();
-            record.FirstName = Randomizer(dataDict, RandomObject.Next(0, totalWeight));
-            record.LastName = "Washington";
+            record.firstname = GetFirstName(CsvData);
+            record.lastname = GetLastName(CsvData);
 
             return record;
         }
@@ -93,6 +77,40 @@ namespace RandomRecords.Models
                 totalWeight = totalWeight + entry.Value;
             }
             return totalWeight;
+        }
+
+        private string GetFirstName(RecordRepository CsvData)
+        {
+            // get gender and access dictionary
+            Dictionary<string, int> dataDict = new Dictionary<string, int>();
+            string gender = GetGender();
+            if (gender == "female")
+            {
+                dataDict = CsvData.FemaleFirst_2010_2015;
+            }
+            else
+            {
+                dataDict = CsvData.MaleFirst_2010_2015;
+            }
+
+            // get total weight from the dictionary
+            int totalWeight = GetTotalWeight(dataDict);
+
+            string selectedName = Randomizer(dataDict, RandomObject.Next(0, totalWeight));
+
+            return selectedName;
+        }
+
+        private string GetLastName(RecordRepository CsvData)
+        {
+            Dictionary<string, int> dataDict = CsvData.LastNames;
+
+            // get total weight from the dictionary
+            int totalWeight = GetTotalWeight(dataDict);
+
+            string selectedName = Randomizer(dataDict, RandomObject.Next(0, totalWeight));
+
+            return selectedName;
         }
     }
 }

@@ -49,8 +49,10 @@ namespace RandomRecords.Models
 
             foreach (string[] row in rows)
             {
+                row[0] = row[0].ToLower();
                 dict[row[0]] = int.Parse(row[1]);
             }
+
 
             return dict;
         }

@@ -4,13 +4,12 @@
 }
 
 <div ng-app="App" ng-controller="AppController">
-
-    <h1>record:</h1>
+    
     <div ng-repeat="field in record">
-        <p>{{field.FirstName}}</p>
-        <p>{{field.LastName}}</p>
-
+        <h1>record:</h1>
+        <p style="text-transform: capitalize">{{field.firstname}}</p>
+        <p style="text-transform: capitalize">{{field.lastname}}</p>
     </div>
-</div>
 
+</div>
 
