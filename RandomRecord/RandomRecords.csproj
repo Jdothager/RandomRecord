@@ -129,7 +129,7 @@
     </Compile>
     <Compile Include="Models\FirstNameField.cs" />
     <Compile Include="Models\LastNameField.cs" />
-    <Compile Include="Models\MaleFirst_2010_2015.cs" />
+    <Compile Include="Models\RecordRepository.cs" />
     <Compile Include="Models\NameField.cs" />
     <Compile Include="Models\Record.cs" />
     <Compile Include="Models\ResultCreator.cs" />

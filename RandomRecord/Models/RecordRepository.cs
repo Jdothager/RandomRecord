@@ -11,13 +11,14 @@ using System.Text;
 
 namespace RandomRecords.Models
 {
-    public class MaleFirst_2010_2015
+    public class RecordRepository
     {
         public Dictionary<string, int> Dict { get; set; }
+        public Dictionary<string, int> MaleFirst_2010_2015 { get; set; }
 
-        public MaleFirst_2010_2015()
+        public RecordRepository()
         {
-            
+            MaleFirst_2010_2015 = GetDict();
         }
 
         public Dictionary<string, int> GetDict()

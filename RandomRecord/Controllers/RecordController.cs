@@ -10,11 +10,13 @@ namespace RandomRecords.Controllers
 {
     public class RecordController : ApiController
     {
+        public static RecordRepository CsvData = new RecordRepository();
+
         public IEnumerable<Record> Get()
         {
             ResultCreator RecordsList = new ResultCreator();
 
-            return RecordsList.GetRecords();
+            return RecordsList.GetRecords(CsvData);
         }
 
     }
