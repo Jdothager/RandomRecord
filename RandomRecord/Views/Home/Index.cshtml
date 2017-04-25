@@ -1,15 +1,6 @@
 ﻿
-@{
-    ViewBag.Title = "Index";
-}
-
-<div ng-app="App" ng-controller="AppController">
-    
-    <div ng-repeat="field in record">
-        <h1>record:</h1>
-        <p style="text-transform: capitalize">{{field.firstname}}</p>
-        <p style="text-transform: capitalize">{{field.lastname}}</p>
-    </div>
-
+<div ng-repeat="field in record">
+    <h1 class="capitalize">{{field.firstname}} {{field.lastname}}</h1>
 </div>
+
 

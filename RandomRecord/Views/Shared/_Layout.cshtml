@@ -3,16 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Random Records</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <title>@ViewBag.Title  Random Records</title>
+
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/custom.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="~/SPA/App.js"></script>
 
 </head>
-<body>
+<body ng-app="App" ng-controller="AppController">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -24,17 +26,20 @@
                 @Html.ActionLink("Random Records", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                </ul>
+                <ul class="nav navbar-nav"></ul>
             </div>
         </div>
     </div>
 
     <div class="container body-content">
-        @RenderBody()
+        <div class="jumbotron">
+
+            @RenderBody()
+
+        </div>
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Random Records</p>
+            <p>&copy; @DateTime.Now.Year - Jeremy Dothager</p>
         </footer>
     </div>
 
