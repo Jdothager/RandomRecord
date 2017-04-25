@@ -68,37 +68,24 @@ namespace RandomRecords.Models
             }
         }
 
-        private int GetTotalWeight(Dictionary<string, int> dataDict)
-        {
-            // get total weight from the dictionary
-            int totalWeight = 0;
-            foreach (KeyValuePair<string, int> entry in dataDict)
-            {
-                totalWeight = totalWeight + entry.Value;
-            }
-            return totalWeight;
-        }
-
         private string GetFirstName(RecordRepository CsvData)
         {
-            // get gender and access dictionary
+            // get gender, access dictionary and get total weight from the dictionary
             Dictionary<string, int> dataDict = new Dictionary<string, int>();
+            int totalWeight;
             string gender = GetGender();
             if (gender == "female")
             {
-                dataDict = CsvData.FemaleFirst_2010_2015;
+                dataDict = CsvData.FemaleFirst2010_2015;
+                totalWeight = CsvData.FemaleFirst2010_2015Weight;
             }
             else
             {
-                dataDict = CsvData.MaleFirst_2010_2015;
+                dataDict = CsvData.MaleFirst2010_2015;
+                totalWeight = CsvData.MaleFirst2010_2015Weight;
             }
 
-            // get total weight from the dictionary
-            int totalWeight = GetTotalWeight(dataDict);
-
-            string selectedName = Randomizer(dataDict, RandomObject.Next(0, totalWeight));
-
-            return selectedName;
+            return Randomizer(dataDict, RandomObject.Next(0, totalWeight));
         }
 
         private string GetLastName(RecordRepository CsvData)
@@ -106,7 +93,7 @@ namespace RandomRecords.Models
             Dictionary<string, int> dataDict = CsvData.LastNames;
 
             // get total weight from the dictionary
-            int totalWeight = GetTotalWeight(dataDict);
+            int totalWeight = CsvData.LastNamesWeight;
 
             string selectedName = Randomizer(dataDict, RandomObject.Next(0, totalWeight));
 

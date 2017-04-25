@@ -13,16 +13,25 @@ namespace RandomRecords.Models
 {
     public class RecordRepository
     {
-        public Dictionary<string, int> MaleFirst_2010_2015 { get; set; }
-        public Dictionary<string, int> FemaleFirst_2010_2015 { get; set; }
+        public Dictionary<string, int> MaleFirst2010_2015 { get; set; }
+        public int MaleFirst2010_2015Weight { get; set; }
+        public Dictionary<string, int> FemaleFirst2010_2015 { get; set; }
+        public int FemaleFirst2010_2015Weight { get; set; }
         public Dictionary<string, int> LastNames { get; set; }
+        public int LastNamesWeight { get; set; }
+
 
 
         public RecordRepository()
         {
-            MaleFirst_2010_2015 = GetDict("~/App_Data/2010_2015_MaleFirst.csv");
-            FemaleFirst_2010_2015 = GetDict("~/App_Data/2010_2015_FemaleFirst.csv");
+            MaleFirst2010_2015 = GetDict("~/App_Data/2010_2015_MaleFirst.csv");
+            MaleFirst2010_2015Weight = GetTotalWeight(MaleFirst2010_2015);
+
+            FemaleFirst2010_2015 = GetDict("~/App_Data/2010_2015_FemaleFirst.csv");
+            FemaleFirst2010_2015Weight = GetTotalWeight(FemaleFirst2010_2015);
+
             LastNames = GetDict("~/App_Data/LastNames.csv");
+            LastNamesWeight = GetTotalWeight(LastNames);
         }
 
         private Dictionary<string, int> GetDict(string file)
@@ -30,6 +39,7 @@ namespace RandomRecords.Models
             // List of string arrays to hold rows
             List<string[]> rows = new List<string[]>();
 
+            // Read the file and convert to string array
             string path = HttpContext.Current.Server.MapPath(file);
             using (StreamReader reader = File.OpenText(path))
             {
@@ -45,18 +55,14 @@ namespace RandomRecords.Models
             }
 
             // Parse each row array into a more friendly Dictionary
-            Dictionary<string, int> dict = new Dictionary<string, int>();
-
+            Dictionary<string, int> dataDict = new Dictionary<string, int>();
             foreach (string[] row in rows)
             {
                 row[0] = row[0].ToLower();
-                dict[row[0]] = int.Parse(row[1]);
+                dataDict[row[0]] = int.Parse(row[1]);
             }
-
-
-            return dict;
+            return dataDict;
         }
-
 
         // Parse a single line of a CSV file into a string array
         private static string[] CSVRowToStringArray(string row, char fieldSeparator = ',', char stringSeparator = '\"')
@@ -91,6 +97,18 @@ namespace RandomRecords.Models
             valueBuilder.Clear();
 
             return rowValues.ToArray();
+        }
+
+        private int GetTotalWeight(Dictionary<string, int> dataDict)
+        {
+            // get total weight from the dictionary
+            int totalWeight = 0;
+            foreach (KeyValuePair<string, int> entry in dataDict)
+            {
+                totalWeight = totalWeight + entry.Value;
+            }
+
+            return totalWeight;
         }
     }
 }
