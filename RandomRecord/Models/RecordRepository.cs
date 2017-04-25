@@ -13,19 +13,24 @@ namespace RandomRecords.Models
 {
     public class RecordRepository
     {
-        public Dictionary<string, int> Dict { get; set; }
         public Dictionary<string, int> MaleFirst_2010_2015 { get; set; }
+        public Dictionary<string, int> FemaleFirst_2010_2015 { get; set; }
+        public Dictionary<string, int> LastNames { get; set; }
+
 
         public RecordRepository()
         {
-            MaleFirst_2010_2015 = GetDict();
+            MaleFirst_2010_2015 = GetDict("~/App_Data/2010_2015_MaleFirst.csv");
+            FemaleFirst_2010_2015 = GetDict("~/App_Data/2010_2015_FemaleFirst.csv");
+            LastNames = GetDict("~/App_Data/LastNames.csv");
         }
 
-        public Dictionary<string, int> GetDict()
+        private Dictionary<string, int> GetDict(string file)
         {
+            // List of string arrays to hold rows
             List<string[]> rows = new List<string[]>();
 
-            string path = HttpContext.Current.Server.MapPath("~/App_Data/2010_2015_MaleFirst.csv");
+            string path = HttpContext.Current.Server.MapPath(file);
             using (StreamReader reader = File.OpenText(path))
             {
                 while (reader.Peek() >= 0)
@@ -40,14 +45,14 @@ namespace RandomRecords.Models
             }
 
             // Parse each row array into a more friendly Dictionary
-            Dictionary<string, int> Dict = new Dictionary<string, int>();
+            Dictionary<string, int> dict = new Dictionary<string, int>();
 
             foreach (string[] row in rows)
             {
-                Dict[row[0]] = int.Parse(row[1]);
+                dict[row[0]] = int.Parse(row[1]);
             }
 
-            return Dict;
+            return dict;
         }
 
         /*

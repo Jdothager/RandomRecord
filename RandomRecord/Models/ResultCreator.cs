@@ -12,8 +12,6 @@ namespace RandomRecords.Models
 
         public IEnumerable<Record> GetRecords(RecordRepository CsvData)
         {
-            
-
             // create dictionary
             Dictionary<string, int> dict = CsvData.MaleFirst_2010_2015;
 
@@ -36,35 +34,5 @@ namespace RandomRecords.Models
 
             return RecordsList;
         }
-
-
-        // we know this works...
-
-
-        //public IEnumerable<Record> GetRecords()
-        //{
-        //    // create dictionary --- TEMP ---
-        //    RecordRepository dataGetter = new RecordRepository();
-        //    Dictionary<string, int> dict = dataGetter.GetDict();
-
-        //    // get total weight from the dictionary
-        //    int totalWeight = 0;
-        //    foreach (KeyValuePair<string, int> entry in dict)
-        //    {
-        //        totalWeight = totalWeight + entry.Value;
-        //    }
-
-        //    // create random object
-        //    Random randomObject = new Random();
-
-        //    List<Record> RecordsList = new List<Record>();
-        //    for (int i = 0; i < 1; i++)
-        //    {
-        //        Record extraBody = new Record(dict, randomObject.Next(0, totalWeight));
-        //        RecordsList.Add(extraBody);
-        //    }
-
-        //    return RecordsList;
-        //}
     }
 }
