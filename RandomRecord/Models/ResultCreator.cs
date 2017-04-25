@@ -8,31 +8,61 @@ namespace RandomRecords.Models
 {
     public class ResultCreator
     {
+        private static Random RandomObject = new Random();
+
         // creates a class to build a list of Records and returns that list
+        // this will be the magic of the randomness happens
 
         public IEnumerable<Record> GetRecords(RecordRepository CsvData)
         {
-            // create dictionary
-            Dictionary<string, int> dict = CsvData.MaleFirst_2010_2015;
-
-            // get total weight from the dictionary
-            int totalWeight = 0;
-            foreach (KeyValuePair<string, int> entry in dict)
-            {
-                totalWeight = totalWeight + entry.Value;
-            }
-
-            // create random object
-            Random randomObject = new Random();
 
             List<Record> RecordsList = new List<Record>();
             for (int i = 0; i < 1; i++)
             {
-                Record extraBody = new Record(dict, randomObject.Next(0, totalWeight));
+                Record extraBody = GetRecord(CsvData);
                 RecordsList.Add(extraBody);
             }
 
             return RecordsList;
+        }
+
+
+        public Record GetRecord(RecordRepository CsvData)
+        {
+            // access dictionary
+            Dictionary<string, int> dataDict = CsvData.MaleFirst_2010_2015;
+
+            // get total weight from the dictionary
+            int totalWeight = 0;
+            foreach (KeyValuePair<string, int> entry in dataDict)
+            {
+                totalWeight = totalWeight + entry.Value;
+            }
+
+            Record record = new Record();
+            record.FirstName = Randomizer(dataDict, RandomObject.Next(0, totalWeight));
+            record.LastName = "Washington";
+
+            return record;
+        }
+
+        private string Randomizer(Dictionary<string, int> dataDict, int randomNumber)
+        {
+            string selectedEntry = null;
+
+            // where the magic happens...
+            foreach (KeyValuePair<string, int> entry in dataDict)
+            {
+                if (randomNumber < entry.Value)
+                {
+                    selectedEntry = entry.Key;
+                    break;
+                }
+
+                randomNumber = randomNumber - entry.Value;
+            }
+
+            return selectedEntry;
         }
     }
 }
