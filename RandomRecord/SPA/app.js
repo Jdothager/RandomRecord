@@ -4,6 +4,5 @@ app.controller('AppController', function ($scope, $http) {
     .then(function (response) {
         $scope.record = response.data;
 
-        $scope.FirstName = record.FirstName
     });
 })

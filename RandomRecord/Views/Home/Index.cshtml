@@ -4,10 +4,13 @@
 }
 
 <div ng-app="App" ng-controller="AppController">
-    <h1>first name:</h1>
-    <p>{{FirstName}}</p>
+
     <h1>record:</h1>
-    <p>{{record}}</p>
+    <div ng-repeat="field in record">
+        <p>{{field.FirstName}}</p>
+        <p>{{field.LastName}}</p>
+
+    </div>
 </div>
 
 
