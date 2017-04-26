@@ -1,6 +1,4 @@
-﻿
-<div ng-repeat="field in record">
-    <h1 class="capitalize">{{field.firstname}} {{field.lastname}}</h1>
+﻿<div ng-controller="AppController">
+    <h1 class="capitalize" ng-repeat="field in record">{{field.firstname}} {{field.lastname}}</h1>
+    <button class="btn btn-primary" ng-click="getNewRecord()">New Record</button>
 </div>
-
-
