@@ -13,5 +13,6 @@ namespace RandomRecords.Models
         public string lastname { get; set; }
         public string dob { get; set; }
         public Location location { get; set; }
+        public string phone { get; set; }
     }
 }

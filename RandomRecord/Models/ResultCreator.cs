@@ -36,6 +36,7 @@ namespace RandomRecords.Models
             record.firstname = GetFirstName(CsvData);
             record.lastname = GetLastName(CsvData);
             record.location = GetLocation(CsvData);
+            record.phone = GetPhone(CsvData);
 
             return record;
         }
@@ -127,6 +128,13 @@ namespace RandomRecords.Models
 
 
             return testLocation;
+        }
+
+        private string GetPhone(RecordRepository CsvData)
+        {
+            string phone = "(314) 867-5309";
+
+            return phone;
         }
     }
 }
