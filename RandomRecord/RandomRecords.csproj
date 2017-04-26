@@ -128,6 +128,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Models\RecordRepository.cs" />
     <Compile Include="Models\Record.cs" />
     <Compile Include="Models\ResultCreator.cs" />
