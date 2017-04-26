@@ -61,10 +61,10 @@ namespace RandomRecords.Models
 
         private string GetBirthDateTime()
         {
-            DateTime from1950 = new DateTime(1950, 1, 1, 0, 0, 0);
+            DateTime from1960 = new DateTime(1960, 1, 1, 0, 0, 0);
             DateTime to2000 = new DateTime(2000, 12, 31, 0, 0, 0);
-            TimeSpan yearRange = to2000 - from1950;
-            DateTime randTimeSpan = from1950 + new TimeSpan((long)(RandomObject.NextDouble() * yearRange.Ticks));
+            TimeSpan yearRange = to2000 - from1960;
+            DateTime randTimeSpan = from1960 + new TimeSpan((long)(RandomObject.NextDouble() * yearRange.Ticks));
             string formatted = string.Format("{0:yyyy-MM-dd HH:mm:ss}", randTimeSpan);
 
             return formatted;

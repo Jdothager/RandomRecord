@@ -1,4 +1,22 @@
 ﻿<div ng-controller="AppController">
-    <h1 class="capitalize" ng-repeat="field in record">{{field.firstname}} {{field.lastname}}</h1>
+    <div ng-repeat="field in record">
+        <h1 class="capitalize">{{field.firstname}} {{field.lastname}}</h1>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Birth Day</div>
+            <div class="panel-body">
+                {{field.dob}}
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Address</div>
+            <div class="panel-body">
+                {{field.location.street}}, {{field.location.city}}, {{field.location.state}} {{field.location.zipcode}}
+            </div>
+        </div>
+
+    </div>
+    
     <button class="btn btn-primary" ng-click="getNewRecord()">New Record</button>
 </div>
