@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RandomRecord.Models;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -34,6 +35,7 @@ namespace RandomRecords.Models
             record.dob = GetBirthDateTime();
             record.firstname = GetFirstName(CsvData);
             record.lastname = GetLastName(CsvData);
+            record.location = GetLocation(CsvData);
 
             return record;
         }
@@ -111,6 +113,18 @@ namespace RandomRecords.Models
             string selectedName = Randomizer(dataDict, RandomObject.Next(0, totalWeight));
 
             return selectedName;
+        }
+
+        private Location GetLocation(RecordRepository CsvData)
+        {
+            Location testLocation = new Location();
+            testLocation.street = "101 Main Ave";
+            testLocation.city = "St. Louis";
+            testLocation.state = "Missouri";
+            testLocation.zipcode = 63117;
+
+
+            return testLocation;
         }
     }
 }
