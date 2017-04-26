@@ -58,7 +58,6 @@ namespace RandomRecords.Models
             Dictionary<string, int> dataDict = new Dictionary<string, int>();
             foreach (string[] row in rows)
             {
-                row[0] = row[0].ToLower();
                 dataDict[row[0]] = int.Parse(row[1]);
             }
             return dataDict;

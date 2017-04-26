@@ -125,13 +125,13 @@ namespace RandomRecords.Models
             testLocation.city = "St. Louis";
             testLocation.state = "Missouri";
             testLocation.zipcode = 63117;
-
-
+            
             return testLocation;
         }
 
         private string GetPhone(RecordRepository CsvData)
         {
+            // TODO everything...
             string phone = "(314) 867-5309";
 
             return phone;
