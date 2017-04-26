@@ -65,7 +65,9 @@ namespace RandomRecords.Models
             DateTime to2000 = new DateTime(2000, 12, 31, 0, 0, 0);
             TimeSpan yearRange = to2000 - from1960;
             DateTime randTimeSpan = from1960 + new TimeSpan((long)(RandomObject.NextDouble() * yearRange.Ticks));
-            string formatted = string.Format("{0:yyyy-MM-dd HH:mm:ss}", randTimeSpan);
+            string formatted = string.Format("{0:yyyy-MM-ddTHH:mm:ss}", randTimeSpan);
+
+
 
             return formatted;
         }
