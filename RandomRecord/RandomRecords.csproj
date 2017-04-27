@@ -113,7 +113,7 @@
     <Content Include="App_Data\2010_2015_FemaleFirst.csv" />
     <Content Include="App_Data\2010_2015_MaleFirst.csv" />
     <Content Include="App_Data\LastNames.csv" />
-    <Content Include="App_Data\ZipCityStabvStafullLatLongPop.csv" />
+    <Content Include="App_Data\ZipCityStateLatLongPop.csv" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

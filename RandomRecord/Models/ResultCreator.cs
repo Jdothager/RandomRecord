@@ -68,8 +68,6 @@ namespace RandomRecords.Models
             DateTime randTimeSpan = from1960 + new TimeSpan((long)(RandomObject.NextDouble() * yearRange.Ticks));
             string formatted = string.Format("{0:yyyy-MM-ddTHH:mm:ss}", randTimeSpan);
 
-
-
             return formatted;
         }
 
@@ -120,13 +118,21 @@ namespace RandomRecords.Models
 
         private Location GetLocation(RecordRepository CsvData)
         {
-            Location testLocation = new Location();
-            testLocation.street = "101 Main Ave";
-            testLocation.city = "St. Louis";
-            testLocation.state = "Missouri";
-            testLocation.zipcode = 63117;
-            
-            return testLocation;
+            Location selectedLocation = new Location();
+            int randomNumber = RandomObject.Next(0, CsvData.ZipCityStatLatLongPopWeight);
+
+            foreach (KeyValuePair<Location, int> loc in CsvData.ZipCityStateLatLongPop)
+            {
+                if (randomNumber < loc.Value)
+                {
+                    selectedLocation = loc.Key;
+                    break;
+                }
+
+                randomNumber = randomNumber - loc.Value;
+            }
+
+            return selectedLocation;
         }
 
         private string GetPhone(RecordRepository CsvData)
