@@ -4,8 +4,11 @@
 
         <div class="panel panel-default">
             <div class="panel-heading">Address</div>
-            <div class="panel-body">
+            <div class="panel-body capitalize" >
                 {{ field.location.street }}, {{ field.location.city }}, {{ field.location.state }} {{ field.location.zipcode }}
+            </div>
+            <div class="panel-body">
+                {{ field.location.latitude }}&deg;, {{ field.location.longitude }}&deg;
             </div>
         </div>
 
