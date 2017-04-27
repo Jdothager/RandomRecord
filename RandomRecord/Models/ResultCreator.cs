@@ -11,33 +11,43 @@ namespace RandomRecords.Models
 {
     public class ResultCreator
     {
+        /* This is the class that builds the records using weighted random values
+         * - all of the random magic happens here, mostly in the Randomizer() method
+         * - retrieves data from the RecordRepository class which stores all the data dictionaries
+         * - RecordReposity class is instantiated in the RecordController and passed in when this class is created
+        */
+
+        // Random object that is shared throughout the class methods
         private static Random RandomObject = new Random();
+        // Copy of the RecordRepo data
+        private RecordRepository CsvData { get; set; }
 
-        // creates a class to build a list of Records and returns that list
-        // this will be the magic of the randomness happens
-
-        public IEnumerable<Record> GetRecords(RecordRepository CsvData)
+        public ResultCreator(RecordRepository data)
         {
+            CsvData = data;
+        }
 
+        public IEnumerable<Record> GetRecords()
+        {
             List<Record> RecordsList = new List<Record>();
             for (int i = 0; i < 1; i++)
             {
-                Record extraBody = GetRecord(CsvData);
-                RecordsList.Add(extraBody);
+                Record newRecord = GetRecord();
+                RecordsList.Add(newRecord);
             }
 
             return RecordsList;
         }
 
 
-        public Record GetRecord(RecordRepository CsvData)
+        public Record GetRecord()
         {
             Record record = new Record();
             record.dob = GetBirthDateTime();
-            record.firstname = GetFirstName(CsvData);
-            record.lastname = GetLastName(CsvData);
-            record.location = GetLocation(CsvData);
-            record.phone = GetPhone(CsvData);
+            record.firstname = GetFirstName();
+            record.lastname = GetLastName();
+            record.location = GetLocation();
+            record.phone = GetPhone();
 
             return record;
         }
@@ -85,7 +95,7 @@ namespace RandomRecords.Models
             }
         }
 
-        private string GetFirstName(RecordRepository CsvData)
+        private string GetFirstName()
         {
             // get gender, access dictionary and get total weight from the dictionary
             Dictionary<string, int> dataDict = new Dictionary<string, int>();
@@ -105,7 +115,7 @@ namespace RandomRecords.Models
             return Randomizer(dataDict, RandomObject.Next(0, totalWeight));
         }
 
-        private string GetLastName(RecordRepository CsvData)
+        private string GetLastName()
         {
             Dictionary<string, int> dataDict = CsvData.LastNames;
 
@@ -117,7 +127,7 @@ namespace RandomRecords.Models
             return selectedName;
         }
 
-        private Location GetLocation(RecordRepository CsvData)
+        private Location GetLocation()
         {
             Location selectedLocation = new Location();
             int randomNumber = RandomObject.Next(0, CsvData.ZipCityStatLatLongPopWeight);
@@ -150,7 +160,7 @@ namespace RandomRecords.Models
             return selectedLocation;
         }
 
-        private string GetPhone(RecordRepository CsvData)
+        private string GetPhone()
         {
             // TODO everything...
             string phone = "(314) 867-5309";
