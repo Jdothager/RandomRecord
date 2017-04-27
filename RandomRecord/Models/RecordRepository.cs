@@ -64,7 +64,7 @@ namespace RandomRecords.Models
             foreach (string[] row in rows)
             {
                 Location loc = new Location();
-                loc.zipcode = int.Parse(row[0]);
+                loc.zipcode = row[0];
                 loc.city = row[1];
                 loc.state = row[2];
                 loc.latitude = double.Parse(row[3]);
