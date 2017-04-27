@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 
@@ -121,6 +122,7 @@ namespace RandomRecords.Models
             Location selectedLocation = new Location();
             int randomNumber = RandomObject.Next(0, CsvData.ZipCityStatLatLongPopWeight);
 
+            // determine zip, city, state, lat and long
             foreach (KeyValuePair<Location, int> loc in CsvData.ZipCityStateLatLongPop)
             {
                 if (randomNumber < loc.Value)
@@ -131,6 +133,19 @@ namespace RandomRecords.Models
 
                 randomNumber = randomNumber - loc.Value;
             }
+
+            // build the street address
+            StringBuilder valueBuilder = new StringBuilder();
+
+            // generate a house number
+            valueBuilder.Append(RandomObject.Next(1000, 15000));
+
+            // choose a street
+            string street = CsvData.StreetNames[RandomObject.Next(CsvData.StreetNames.Count())];
+
+            // build the string and set it to the Location object
+            valueBuilder.Append(" " + street);
+            selectedLocation.street = valueBuilder.ToString();
 
             return selectedLocation;
         }

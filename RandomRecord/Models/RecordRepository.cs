@@ -19,6 +19,7 @@ namespace RandomRecords.Models
         public int LastNamesWeight { get; set; }
         public Dictionary<Location, int> ZipCityStateLatLongPop { get; set; }
         public int ZipCityStatLatLongPopWeight { get; set; }
+        public List<string> StreetNames { get; set; }
 
 
 
@@ -35,12 +36,14 @@ namespace RandomRecords.Models
 
             ZipCityStateLatLongPop = GetLocDict("~/App_Data/ZipCityStateLatLongPop.csv");
             ZipCityStatLatLongPopWeight = GetLocTotalWeight(ZipCityStateLatLongPop);
+
+            StreetNames = GetNamesList("~/App_Data/StreetNames.csv");
         }
 
         private Dictionary<string, int> GetDict(string file)
         {
             // List of string arrays to hold rows
-            List<string[]> rows = CSVToRows(file);
+            List<string[]> rows = CsvToListOfStringArrays(file);
 
             // Parse each row array into a more friendly Dictionary
             Dictionary<string, int> dataDict = new Dictionary<string, int>();
@@ -54,7 +57,7 @@ namespace RandomRecords.Models
         private Dictionary<Location, int> GetLocDict(string file)
         {
             // List of string arrays to hold rows
-            List<string[]> rows = CSVToRows(file);
+            List<string[]> rows = CsvToListOfStringArrays(file);
 
             // Parse each row array into a location Dictionary
             Dictionary<Location, int> locDict = new Dictionary<Location, int>();
@@ -72,38 +75,29 @@ namespace RandomRecords.Models
             return locDict;
         }
 
-        //private Dictionary<string, int> GetDict(string file)
-        //{
-        //    // List of string arrays to hold rows
-        //    List<string[]> rows = new List<string[]>();
+        private List<string> GetNamesList(string file)
+        {
+            // List of strings to return
+            List<string> names = new List<string>();
 
-        //    // Read the file and convert to string array
-        //    string path = HttpContext.Current.Server.MapPath(file);
-        //    using (StreamReader reader = File.OpenText(path))
-        //    {
-        //        while (reader.Peek() >= 0)
-        //        {
-        //            string line = reader.ReadLine();
-        //            string[] rowArrray = CSVRowToStringArray(line);
-        //            if (rowArrray.Length > 0)
-        //            {
-        //                rows.Add(rowArrray);
-        //            }
-        //        }
-        //    }
+            // Read the file and convert each row to string and add to list
+            string path = HttpContext.Current.Server.MapPath(file);
+            using (StreamReader reader = File.OpenText(path))
+            {
+                while (reader.Peek() >= 0)
+                {
+                    string line = reader.ReadLine();
+                    if (line.Length > 0)
+                    {
+                        names.Add(line);
+                    }
+                }
+            }
 
-        //    // Parse each row array into a more friendly Dictionary
-        //    Dictionary<string, int> dataDict = new Dictionary<string, int>();
-        //    foreach (string[] row in rows)
-        //    {
-        //        dataDict[row[0]] = int.Parse(row[1]);
-        //    }
-        //    return dataDict;
-        //}
+            return names;
+        }
 
-        // Parse a single line of a CSV file into a string array
-
-        private static List<string[]> CSVToRows(string file)
+        private static List<string[]> CsvToListOfStringArrays(string file)
         {
             // List of string arrays to hold rows
             List<string[]> rows = new List<string[]>();
@@ -115,7 +109,7 @@ namespace RandomRecords.Models
                 while (reader.Peek() >= 0)
                 {
                     string line = reader.ReadLine();
-                    string[] rowArrray = CSVRowToStringArray(line);
+                    string[] rowArrray = CsvRowToStringArray(line);
                     if (rowArrray.Length > 0)
                     {
                         rows.Add(rowArrray);
@@ -126,7 +120,7 @@ namespace RandomRecords.Models
             return rows;
         }
 
-        private static string[] CSVRowToStringArray(string row, char fieldSeparator = ',', char stringSeparator = '\"')
+        private static string[] CsvRowToStringArray(string row, char fieldSeparator = ',', char stringSeparator = '\"')
         {
             bool isBetweenQuotes = false;
             StringBuilder valueBuilder = new StringBuilder();
