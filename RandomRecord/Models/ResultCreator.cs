@@ -47,7 +47,10 @@ namespace RandomRecords.Models
             record.firstname = GetFirstName();
             record.lastname = GetLastName();
             record.location = GetLocation();
-            record.phone = GetPhone();
+
+            Tuple<string, string> PhoneZipCode = GetPhoneTimeZone(record.location);
+            record.phone = PhoneZipCode.Item1;
+            record.location.timezone = PhoneZipCode.Item2;
 
             return record;
         }
@@ -160,12 +163,87 @@ namespace RandomRecords.Models
             return selectedLocation;
         }
 
-        private string GetPhone()
+        private Tuple<string, string> GetPhoneTimeZone(Location location)
         {
-            // TODO everything...
-            string phone = "(314) 867-5309";
+            string targetState = location.state;
+            string targetCity = location.city;
 
-            return phone;
+            // local variable to manipulate
+            // list of string arrays --> ["state", "area code", "time zone", "cities"]
+            List<string[]> dataList = CsvData.AreaCodeTimeZones;
+
+            // holds string[] that are within target state
+            List<string[]> listContainsState = new List<string[]>();
+            // search for listings in the target state
+            foreach (string[] listing in dataList)
+            {
+                if (listing[0].Contains(targetState))
+                {
+                    listContainsState.Add(listing);
+                }
+            }
+
+            // holds string[] that contain target city
+            List<string[]> listContainsCity = new List<string[]>();
+            // separate results that contain target city
+            foreach (string[] listing in listContainsState)
+            {
+                if (listing[3].Contains(targetCity))
+                {
+                    listContainsCity.Add(listing);
+                }
+            }
+
+            // enough filtering, time to choose an area code and resulting time zone
+            string selectedAreaCode;
+            string selectedTimeZone;
+            int cityCount = listContainsCity.Count();
+            if (cityCount > 0)
+            {
+                // randomly get listing
+                int randomNumber = RandomObject.Next(cityCount);
+                selectedAreaCode = listContainsCity[randomNumber][1];
+                selectedTimeZone = listContainsCity[randomNumber][2];
+            }
+            else
+            {
+                // randomly get listing
+                int randomNumber = RandomObject.Next(cityCount);
+                selectedAreaCode = listContainsState[randomNumber][1];
+                selectedTimeZone = listContainsState[randomNumber][2];
+            }
+
+            // add areacode to phone number
+            string phone = "(" + selectedAreaCode + ") ";
+
+            /* 
+            * nxx refers to the middle three numbers of a phone number:
+            * (***) XXX-****
+            * convention - allowed ranges:
+            * [2-9] for the first digit, and [0-9] for both the second and third digits,
+            * but the second digit and the third digit can not be the same,
+            * example: not allowed -> (***) *11-****
+            * 
+            * The last four allow [0-9]
+            */
+            bool nxxIsFound = false;
+            while (!nxxIsFound)
+            {
+                string randomNumber = RandomObject.Next(200, 999).ToString();
+                if (randomNumber[1] != randomNumber[2])
+                {
+                    phone = phone + randomNumber + "-";
+                    nxxIsFound = true;
+                }
+            }
+
+            for (int i = 0; i < 4; i++)
+            {
+                string randomNumber = RandomObject.Next(0, 10).ToString();
+                phone = phone + randomNumber;
+            }
+
+            return Tuple.Create(phone, selectedTimeZone);
         }
     }
 }

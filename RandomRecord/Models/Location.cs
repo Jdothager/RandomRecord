@@ -13,5 +13,6 @@ namespace RandomRecord.Models
         public string zipcode { get; set; }
         public double latitude { get; set; }
         public double longitude { get; set; }
+        public string timezone { get; set; }
     }
 }

@@ -115,6 +115,7 @@
     <Content Include="App_Data\LastNames.csv" />
     <Content Include="App_Data\ZipCityStateLatLongPop.csv" />
     <Content Include="App_Data\StreetNames.csv" />
+    <Content Include="App_Data\StateAreaCodeTZCity.csv" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

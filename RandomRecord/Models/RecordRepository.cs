@@ -20,8 +20,7 @@ namespace RandomRecords.Models
         public Dictionary<Location, int> ZipCityStateLatLongPop { get; set; }
         public int ZipCityStatLatLongPopWeight { get; set; }
         public List<string> StreetNames { get; set; }
-
-
+        public List<string[]> AreaCodeTimeZones { get; set; }
 
         public RecordRepository()
         {
@@ -38,6 +37,8 @@ namespace RandomRecords.Models
             ZipCityStatLatLongPopWeight = GetLocTotalWeight(ZipCityStateLatLongPop);
 
             StreetNames = GetNamesList("~/App_Data/StreetNames.csv");
+
+            AreaCodeTimeZones = GetAreaCodeTimeZoneDict("~/App_Data/StateAreaCodeTZCity.csv");
         }
 
         private Dictionary<string, int> GetDict(string file)
@@ -95,6 +96,19 @@ namespace RandomRecords.Models
             }
 
             return names;
+        }
+
+        private List<string[]> GetAreaCodeTimeZoneDict(string file)
+        {
+            /*
+            * I left this as a separate method, rather than just calling CsvToListOfStringArrays()
+            * because I may refactor the csv files
+            */
+
+            // create list that holds a string[] of each line of file
+            List<string[]> rows = CsvToListOfStringArrays(file);
+
+            return rows;
         }
 
         private static List<string[]> CsvToListOfStringArrays(string file)
