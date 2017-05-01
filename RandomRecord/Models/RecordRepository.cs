@@ -11,11 +11,35 @@ namespace RandomRecords.Models
 {
     public class RecordRepository
     {
-        public Dictionary<string, int> MaleFirst2010_2015 { get; set; }
-        public int MaleFirst2010_2015Weight { get; set; }
-        public Dictionary<string, int> FemaleFirst2010_2015 { get; set; }
-        public int FemaleFirst2010_2015Weight { get; set; }
-        public Dictionary<string, int> LastNames { get; set; }
+        public Dictionary<string, int> FemaleFirst2010s { get; set; } = new Dictionary<string, int>();
+        public Dictionary<string, int> FemaleFirst2000s { get; set; } = new Dictionary<string, int>();
+        public Dictionary<string, int> FemaleFirst1990s { get; set; } = new Dictionary<string, int>();
+        public Dictionary<string, int> FemaleFirst1980s { get; set; } = new Dictionary<string, int>();
+        public Dictionary<string, int> FemaleFirst1970s { get; set; } = new Dictionary<string, int>();
+        public Dictionary<string, int> FemaleFirst1960s { get; set; } = new Dictionary<string, int>();
+
+        public int FemaleFirst2010sWeight { get; set; }
+        public int FemaleFirst2000sWeight { get; set; }
+        public int FemaleFirst1990sWeight { get; set; }
+        public int FemaleFirst1980sWeight { get; set; }
+        public int FemaleFirst1970sWeight { get; set; }
+        public int FemaleFirst1960sWeight { get; set; }
+
+        public Dictionary<string, int> MaleFirst2010s { get; set; } = new Dictionary<string, int>();
+        public Dictionary<string, int> MaleFirst2000s { get; set; } = new Dictionary<string, int>();
+        public Dictionary<string, int> MaleFirst1990s { get; set; } = new Dictionary<string, int>();
+        public Dictionary<string, int> MaleFirst1980s { get; set; } = new Dictionary<string, int>();
+        public Dictionary<string, int> MaleFirst1970s { get; set; } = new Dictionary<string, int>();
+        public Dictionary<string, int> MaleFirst1960s { get; set; } = new Dictionary<string, int>();
+
+        public int MaleFirst2010sWeight { get; set; }
+        public int MaleFirst2000sWeight { get; set; }
+        public int MaleFirst1990sWeight { get; set; }
+        public int MaleFirst1980sWeight { get; set; }
+        public int MaleFirst1970sWeight { get; set; }
+        public int MaleFirst1960sWeight { get; set; }
+
+        public Dictionary<string, int> LastNames { get; set; } = new Dictionary<string, int>();
         public int LastNamesWeight { get; set; }
         public Dictionary<Location, int> ZipCityStateLatLongPop { get; set; }
         public int ZipCityStatLatLongPopWeight { get; set; }
@@ -24,35 +48,76 @@ namespace RandomRecords.Models
 
         public RecordRepository()
         {
-            MaleFirst2010_2015 = GetDict("~/App_Data/2010_2015_MaleFirst.csv");
-            MaleFirst2010_2015Weight = GetTotalWeight(MaleFirst2010_2015);
+            LoadFirstNameDicts("~/App_Data/FirstNames1960_2015.csv");
+            LoadFirstNameWeights();
 
-            FemaleFirst2010_2015 = GetDict("~/App_Data/2010_2015_FemaleFirst.csv");
-            FemaleFirst2010_2015Weight = GetTotalWeight(FemaleFirst2010_2015);
-
-            LastNames = GetDict("~/App_Data/LastNames.csv");
+            LoadLastNamesDicts("~/App_Data/LastNames.csv");
             LastNamesWeight = GetTotalWeight(LastNames);
 
             ZipCityStateLatLongPop = GetLocDict("~/App_Data/ZipCityStateLatLongPop.csv");
             ZipCityStatLatLongPopWeight = GetLocTotalWeight(ZipCityStateLatLongPop);
 
-            StreetNames = GetNamesList("~/App_Data/StreetNames.csv");
+            StreetNames = GetStreetNamesList("~/App_Data/StreetNames.csv");
 
             AreaCodeTimeZones = GetAreaCodeTimeZoneDict("~/App_Data/StateAreaCodeTZCity.csv");
         }
 
-        private Dictionary<string, int> GetDict(string file)
+        private void LoadFirstNameDicts(string file)
+        {
+            // List of string arrays to hold rows
+            List<string[]> rows = CsvToListOfStringArrays(file);
+
+            // Parse each row array into corresponding dictionary property
+            foreach (string[] row in rows)
+            {
+                MaleFirst1960s[row[0]] = int.Parse(row[1]);
+                FemaleFirst1960s[row[2]] = int.Parse(row[3]);
+
+                MaleFirst1970s[row[4]] = int.Parse(row[5]);
+                FemaleFirst1970s[row[6]] = int.Parse(row[7]);
+
+                MaleFirst1980s[row[8]] = int.Parse(row[9]);
+                FemaleFirst1980s[row[10]] = int.Parse(row[11]);
+
+                MaleFirst1990s[row[12]] = int.Parse(row[13]);
+                FemaleFirst1990s[row[14]] = int.Parse(row[15]);
+
+                MaleFirst2000s[row[16]] = int.Parse(row[17]);
+                FemaleFirst2000s[row[18]] = int.Parse(row[19]);
+
+                MaleFirst2010s[row[20]] = int.Parse(row[21]);
+                FemaleFirst2010s[row[22]] = int.Parse(row[23]);
+            }
+        }
+
+        private void LoadFirstNameWeights()
+        {
+            MaleFirst2010sWeight = GetTotalWeight(MaleFirst2010s);
+            MaleFirst2000sWeight = GetTotalWeight(MaleFirst2000s);
+            MaleFirst1990sWeight = GetTotalWeight(MaleFirst1990s);
+            MaleFirst1980sWeight = GetTotalWeight(MaleFirst1980s);
+            MaleFirst1970sWeight = GetTotalWeight(MaleFirst1970s);
+            MaleFirst1960sWeight = GetTotalWeight(MaleFirst1960s);
+
+            FemaleFirst2010sWeight = GetTotalWeight(FemaleFirst2010s);
+            FemaleFirst2000sWeight = GetTotalWeight(FemaleFirst2000s);
+            FemaleFirst1990sWeight = GetTotalWeight(FemaleFirst1990s);
+            FemaleFirst1980sWeight = GetTotalWeight(FemaleFirst1980s);
+            FemaleFirst1970sWeight = GetTotalWeight(FemaleFirst1970s);
+            FemaleFirst1960sWeight = GetTotalWeight(FemaleFirst1960s);
+        }
+
+        private void LoadLastNamesDicts(string file)
         {
             // List of string arrays to hold rows
             List<string[]> rows = CsvToListOfStringArrays(file);
 
             // Parse each row array into a more friendly Dictionary
-            Dictionary<string, int> dataDict = new Dictionary<string, int>();
             foreach (string[] row in rows)
             {
-                dataDict[row[0]] = int.Parse(row[1]);
+                LastNames[row[0]] = int.Parse(row[1]);
             }
-            return dataDict;
+
         }
 
         private Dictionary<Location, int> GetLocDict(string file)
@@ -76,7 +141,7 @@ namespace RandomRecords.Models
             return locDict;
         }
 
-        private List<string> GetNamesList(string file)
+        private List<string> GetStreetNamesList(string file)
         {
             // List of strings to return
             List<string> names = new List<string>();

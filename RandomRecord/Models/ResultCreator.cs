@@ -106,13 +106,13 @@ namespace RandomRecords.Models
             string gender = GetGender();
             if (gender == "female")
             {
-                dataDict = CsvData.FemaleFirst2010_2015;
-                totalWeight = CsvData.FemaleFirst2010_2015Weight;
+                dataDict = CsvData.FemaleFirst2010s;
+                totalWeight = CsvData.FemaleFirst2010sWeight;
             }
             else
             {
-                dataDict = CsvData.MaleFirst2010_2015;
-                totalWeight = CsvData.MaleFirst2010_2015Weight;
+                dataDict = CsvData.MaleFirst2010s;
+                totalWeight = CsvData.MaleFirst2010sWeight;
             }
 
             return Randomizer(dataDict, RandomObject.Next(0, totalWeight));
