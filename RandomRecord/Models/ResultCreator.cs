@@ -46,13 +46,9 @@ namespace RandomRecords.Models
             Record record = new Record();
             GetBirthDateTime(record);
             GetFirstName(record);
-            record.lastname = GetLastName();
-            record.location = GetLocation();
-            
-            // TODO if I am passing it, why not just make the method return void?
-            Tuple<string, string> PhoneZipCode = GetPhoneTimeZone(record.location);
-            record.phone = PhoneZipCode.Item1;
-            record.location.timezone = PhoneZipCode.Item2;
+            GetLastName(record);
+            GetLocation(record);
+            GetPhoneTimeZone(record);
 
             return record;
         }
@@ -177,19 +173,15 @@ namespace RandomRecords.Models
             }
         }
 
-        private string GetLastName()
+        private void GetLastName(Record record)
         {
-            Dictionary<string, int> dataDict = CsvData.LastNames;
-
-            // get total weight from the dictionary
-            int totalWeight = CsvData.LastNamesWeight;
-
-            string selectedName = Randomizer(dataDict, RandomObject.Next(0, totalWeight));
-
-            return selectedName;
+           /* pass the Randomizer method the csv data for the last names as well as the total weight
+            * ->and set the value to the lastname field of the record
+            */
+          record.lastname = Randomizer(CsvData.LastNames, RandomObject.Next(0, CsvData.LastNamesWeight));
         }
 
-        private Location GetLocation()
+        private void GetLocation(Record record)
         {
             Location selectedLocation = new Location();
             int randomNumber = RandomObject.Next(0, CsvData.ZipCityStatLatLongPopWeight);
@@ -219,13 +211,14 @@ namespace RandomRecords.Models
             valueBuilder.Append(" " + street);
             selectedLocation.street = valueBuilder.ToString();
 
-            return selectedLocation;
+            // set the filled Location object to the record
+            record.location = selectedLocation;
         }
 
-        private Tuple<string, string> GetPhoneTimeZone(Location location)
+        private void GetPhoneTimeZone(Record record)
         {
-            string targetState = location.state;
-            string targetCity = location.city;
+            string targetState = record.location.state;
+            string targetCity = record.location.city;
 
             // local variable to manipulate
             // list of string arrays --> ["state", "area code", "time zone", "cities"]
@@ -273,7 +266,7 @@ namespace RandomRecords.Models
             }
 
             // add areacode to phone number
-            string phone = "(" + selectedAreaCode + ") ";
+            string selectedPhone = "(" + selectedAreaCode + ") ";
 
             /* 
             * nxx refers to the middle three numbers of a phone number:
@@ -291,7 +284,7 @@ namespace RandomRecords.Models
                 string randomNumber = RandomObject.Next(200, 999).ToString();
                 if (randomNumber[1] != randomNumber[2])
                 {
-                    phone = phone + randomNumber + "-";
+                    selectedPhone = selectedPhone + randomNumber + "-";
                     nxxIsFound = true;
                 }
             }
@@ -299,10 +292,12 @@ namespace RandomRecords.Models
             for (int i = 0; i < 4; i++)
             {
                 string randomNumber = RandomObject.Next(0, 10).ToString();
-                phone = phone + randomNumber;
+                selectedPhone = selectedPhone + randomNumber;
             }
 
-            return Tuple.Create(phone, selectedTimeZone);
+            // set results to the record
+            record.phone = selectedPhone;
+            record.location.timezone = selectedTimeZone;
         }
     }
 }
