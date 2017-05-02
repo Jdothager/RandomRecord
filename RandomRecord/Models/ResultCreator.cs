@@ -19,6 +19,7 @@ namespace RandomRecords.Models
 
         // Random object that is shared throughout the class methods
         private static Random RandomObject = new Random();
+
         // Copy of the RecordRepo data
         private RecordRepository CsvData { get; set; }
 
@@ -43,11 +44,12 @@ namespace RandomRecords.Models
         public Record GetRecord()
         {
             Record record = new Record();
-            record.dob = GetBirthDateTime();
-            record.firstname = GetFirstName();
+            GetBirthDateTime(record);
+            GetFirstName(record);
             record.lastname = GetLastName();
             record.location = GetLocation();
-
+            
+            // TODO if I am passing it, why not just make the method return void?
             Tuple<string, string> PhoneZipCode = GetPhoneTimeZone(record.location);
             record.phone = PhoneZipCode.Item1;
             record.location.timezone = PhoneZipCode.Item2;
@@ -74,19 +76,23 @@ namespace RandomRecords.Models
             return selectedEntry;
         }
 
-        private string GetBirthDateTime()
+        private void GetBirthDateTime(Record record)
         {
-            DateTime from1960 = new DateTime(1960, 1, 1, 0, 0, 0);
-            DateTime to2000 = new DateTime(2000, 12, 31, 0, 0, 0);
-            TimeSpan yearRange = to2000 - from1960;
-            DateTime randTimeSpan = from1960 + new TimeSpan((long)(RandomObject.NextDouble() * yearRange.Ticks));
-            string formatted = string.Format("{0:yyyy-MM-ddTHH:mm:ss}", randTimeSpan);
+            // TODO add population weighted values to year selector
+            // select a birth year
+            int selectedYear = RandomObject.Next(1960, 2001);
 
-            return formatted;
+            DateTime fromDateTime = new DateTime(selectedYear, 1, 1, 0, 0, 0);
+            DateTime toDateTime = new DateTime(selectedYear, 12, 31, 23, 59, 59);
+            TimeSpan yearRange = toDateTime - fromDateTime;
+            DateTime selectedDateTime = fromDateTime + new TimeSpan((long)(RandomObject.NextDouble() * yearRange.Ticks));
+
+            record.dob = selectedDateTime;
         }
 
         private string GetGender()
         {
+            // TODO add realistic historical probabilities
             int coin = RandomObject.Next(0, 2);
             if (coin % 2 == 0)
             {
@@ -98,24 +104,77 @@ namespace RandomRecords.Models
             }
         }
 
-        private string GetFirstName()
+        private void GetFirstName(Record record)
         {
-            // get gender, access dictionary and get total weight from the dictionary
-            Dictionary<string, int> dataDict = new Dictionary<string, int>();
-            int totalWeight;
-            string gender = GetGender();
-            if (gender == "female")
+            // dictionaries to hold selected data sets base on year and gender
+            Dictionary<string, int> femaleDataDict = new Dictionary<string, int>();
+            int femaleTotalWeight;
+            Dictionary<string, int> maleDataDict = new Dictionary<string, int>();
+            int maleTotalWeight;
+
+            // select and set birth year -> select correct datasets and total weight values
+            int birthYear = record.dob.Year;
+            if (birthYear >= 2010)
             {
-                dataDict = CsvData.FemaleFirst2010s;
-                totalWeight = CsvData.FemaleFirst2010sWeight;
+                femaleDataDict = CsvData.FemaleFirst2010s;
+                femaleTotalWeight = CsvData.FemaleFirst2010sWeight;
+
+                maleDataDict = CsvData.MaleFirst2010s;
+                maleTotalWeight = CsvData.MaleFirst2010sWeight;
+            }
+            else if (birthYear >= 2000)
+            {
+                femaleDataDict = CsvData.FemaleFirst2000s;
+                femaleTotalWeight = CsvData.FemaleFirst2000sWeight;
+
+                maleDataDict = CsvData.MaleFirst2000s;
+                maleTotalWeight = CsvData.MaleFirst2000sWeight;
+            }
+            else if(birthYear >= 1990)
+            {
+                femaleDataDict = CsvData.FemaleFirst1990s;
+                femaleTotalWeight = CsvData.FemaleFirst1990sWeight;
+
+                maleDataDict = CsvData.MaleFirst1990s;
+                maleTotalWeight = CsvData.MaleFirst1990sWeight;
+            }
+            else if(birthYear >= 1980)
+            {
+                femaleDataDict = CsvData.FemaleFirst1980s;
+                femaleTotalWeight = CsvData.FemaleFirst1980sWeight;
+
+                maleDataDict = CsvData.MaleFirst1980s;
+                maleTotalWeight = CsvData.MaleFirst1980sWeight;
+            }
+            else if(birthYear >= 1970)
+            {
+                femaleDataDict = CsvData.FemaleFirst1970s;
+                femaleTotalWeight = CsvData.FemaleFirst1970sWeight;
+
+                maleDataDict = CsvData.MaleFirst1970s;
+                maleTotalWeight = CsvData.MaleFirst1970sWeight;
             }
             else
             {
-                dataDict = CsvData.MaleFirst2010s;
-                totalWeight = CsvData.MaleFirst2010sWeight;
+                femaleDataDict = CsvData.FemaleFirst1960s;
+                femaleTotalWeight = CsvData.FemaleFirst1960sWeight;
+
+                maleDataDict = CsvData.MaleFirst1960s;
+                maleTotalWeight = CsvData.MaleFirst1960sWeight;
             }
 
-            return Randomizer(dataDict, RandomObject.Next(0, totalWeight));
+            // set gender
+            record.gender = GetGender();
+
+            // use predetermined data sets, gender, and weight to choose name -> set firstname to the record
+            if (record.gender == "female")
+            {
+                record.firstname = Randomizer(femaleDataDict, RandomObject.Next(0, femaleTotalWeight));
+            }
+            else
+            {
+                record.firstname = Randomizer(maleDataDict, RandomObject.Next(0, maleTotalWeight));
+            }
         }
 
         private string GetLastName()
