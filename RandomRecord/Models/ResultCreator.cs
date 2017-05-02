@@ -1,10 +1,8 @@
 ﻿using RandomRecord.Models;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Web;
 
 
 namespace RandomRecords.Models
@@ -28,10 +26,10 @@ namespace RandomRecords.Models
             CsvData = data;
         }
 
-        public IEnumerable<Record> GetRecords()
+        public IEnumerable<Record> GetRecords(int qty)
         {
             List<Record> RecordsList = new List<Record>();
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < qty; i++)
             {
                 Record newRecord = GetRecord();
                 RecordsList.Add(newRecord);
@@ -39,7 +37,6 @@ namespace RandomRecords.Models
 
             return RecordsList;
         }
-
 
         public Record GetRecord()
         {
