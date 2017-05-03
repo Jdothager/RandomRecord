@@ -1,31 +1,43 @@
-﻿<div ng-controller="AppController">
-    <div ng-repeat="field in record">
-        <h2 class="capitalize">{{ field.firstname }} {{ field.lastname }}</h2>
+﻿<div class="container">
+    <div class="row">
 
-        <div class="panel-group">
-            <div class="panel panel-default">
-                <div class="panel-heading">Address</div>
-                <div class="panel-body text-capitalize">
-                    <div>{{ field.location.street }}, {{ field.location.city }}, {{ field.location.state }} {{ field.location.zipcode }}</div>
-                    <div>{{ field.location.latitude }}&deg;, {{ field.location.longitude }}&deg;</div>
+        <div class="col-sm-3"></div>
+
+            <div class="col-sm-6">
+                <div ng-controller="AppController">
+                    <div ng-repeat="field in record">
+                        <h2 class="capitalize">{{ field.firstname }} {{ field.lastname }}</h2>
+
+                        <div class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Address</div>
+                                <div class="panel-body text-capitalize">
+                                    <div>{{ field.location.street }}, {{ field.location.city }}, {{ field.location.state }} {{ field.location.zipcode }}</div>
+                                    <div>{{ field.location.latitude }}&deg;, {{ field.location.longitude }}&deg;</div>
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Birth Day</div>
+                                <div class="panel-body">
+                                    {{ field.dob | date: "longDate" }}
+                                </div>
+                            </div>
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Phone</div>
+                                <div class="panel-body">
+                                    {{ field.phone }}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <button class="btn btn-primary" ng-click="getNewRecord()">New Record</button>
                 </div>
             </div>
 
-            <div class="panel panel-default">
-                <div class="panel-heading">Birth Day</div>
-                <div class="panel-body">
-                    {{ field.dob | date: "longDate" }}
-                </div>
-            </div>
-
-            <div class="panel panel-default">
-                <div class="panel-heading">Phone</div>
-                <div class="panel-body">
-                    {{ field.phone }}
-                </div>
-            </div>
-        </div>
+        <div class="col-sm-3"></div>
 
     </div>
-    <button class="btn btn-primary" ng-click="getNewRecord()">New Record</button>
 </div>
