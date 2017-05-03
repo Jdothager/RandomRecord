@@ -1,26 +1,28 @@
 ﻿<div ng-controller="AppController">
     <div ng-repeat="field in record">
-        <h1 class="capitalize">{{ field.firstname }} {{ field.lastname }}</h1>
-
-        <div class="panel panel-default">
-            <div class="panel-heading">Address</div>
-            <div class="panel-body capitalize" >
-                <div>{{ field.location.street }}, {{ field.location.city }}, {{ field.location.state }} {{ field.location.zipcode }}</div>
-                <div>{{ field.location.latitude }}&deg;, {{ field.location.longitude }}&deg;</div>
+        <h3 class="capitalize">{{ field.firstname }} {{ field.lastname }}</h3>
+            
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <div class="panel-heading">Address</div>
+                <div class="panel-body capitalize">
+                    <div>{{ field.location.street }}, {{ field.location.city }}, {{ field.location.state }} {{ field.location.zipcode }}</div>
+                    <div>{{ field.location.latitude }}&deg;, {{ field.location.longitude }}&deg;</div>
+                </div>
             </div>
-        </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">Birth Day</div>
-            <div class="panel-body">
-                {{ field.dob | date: "longDate" }}
+            <div class="panel panel-default">
+                <div class="panel-heading">Birth Day</div>
+                <div class="panel-body">
+                    {{ field.dob | date: "longDate" }}
+                </div>
             </div>
-        </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">Phone</div>
-            <div class="panel-body">
-                {{ field.phone }}
+            <div class="panel panel-default">
+                <div class="panel-heading">Phone</div>
+                <div class="panel-body">
+                    {{ field.phone }}
+                </div>
             </div>
         </div>
 

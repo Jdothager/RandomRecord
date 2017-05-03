@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title  Random Records</title>
+    <title>@ViewBag.Title Realistic Random Records</title>
 
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
@@ -23,15 +23,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Random Records", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav"></ul>
+                <ul class="nav navbar-nav">
+                </ul>
             </div>
         </div>
     </div>
 
     <div class="container body-content">
+        <div class="jumbotron">
+            <h1>Realistic Random Records</h1>
+            <p>API service that creates randomly generated user fields, utilizing real-world historical weighted values</p>
+        </div>
         <div class="jumbotron">
 
             @RenderBody()
