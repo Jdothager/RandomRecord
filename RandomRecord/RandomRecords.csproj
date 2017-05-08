@@ -102,10 +102,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\custom.css" />
-    <Content Include="Content\Site.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\demo.css" />
+    <Content Include="assets\css\material-kit.css" />
+    <Content Include="assets\img\apple-icon.png" />
+    <Content Include="assets\img\bg2.jpeg" />
+    <Content Include="assets\img\city.jpg" />
+    <Content Include="assets\img\examples\city.jpg" />
+    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\loading-bubbles.svg" />
+    <Content Include="assets\js\bootstrap-datepicker.js" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\jquery.min.js" />
+    <Content Include="assets\js\material-kit.js" />
+    <Content Include="assets\js\material.min.js" />
+    <Content Include="assets\js\nouislider.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -115,6 +126,61 @@
     <Content Include="App_Data\StreetNames.csv" />
     <Content Include="App_Data\StateAreaCodeTZCity.csv" />
     <Content Include="App_Data\FirstNames1960_2015.csv" />
+    <Content Include="assets\css\.DS_Store" />
+    <Content Include="assets\css\material-kit.css.map" />
+    <Content Include="assets\img\.DS_Store" />
+    <Content Include="assets\img\examples\.DS_Store" />
+    <Content Include="assets\img\faces\.DS_Store" />
+    <Content Include="assets\img\presentation\.DS_Store" />
+    <Content Include="assets\img\sections\.DS_Store" />
+    <Content Include="assets\js\.DS_Store" />
+    <Content Include="assets\sass\.DS_Store" />
+    <Content Include="assets\sass\material-kit.scss" />
+    <Content Include="assets\sass\material-kit\.DS_Store" />
+    <Content Include="assets\sass\material-kit\plugins\_plugin-datepicker.scss" />
+    <Content Include="assets\sass\material-kit\plugins\_plugin-dropdownjs.scss" />
+    <Content Include="assets\sass\material-kit\plugins\_plugin-nouislider.scss" />
+    <Content Include="assets\sass\material-kit\plugins\_plugin-selectize.scss" />
+    <Content Include="assets\sass\material-kit\plugins\_plugin-snackbarjs.scss" />
+    <Content Include="assets\sass\material-kit\_alerts.scss" />
+    <Content Include="assets\sass\material-kit\_buttons.scss" />
+    <Content Include="assets\sass\material-kit\_cards.scss" />
+    <Content Include="assets\sass\material-kit\_carousel.scss" />
+    <Content Include="assets\sass\material-kit\_checkboxes.scss" />
+    <Content Include="assets\sass\material-kit\_colors.scss" />
+    <Content Include="assets\sass\material-kit\_core.scss" />
+    <Content Include="assets\sass\material-kit\_dialogs.scss" />
+    <Content Include="assets\sass\material-kit\_dividers.scss" />
+    <Content Include="assets\sass\material-kit\_dropdown.scss" />
+    <Content Include="assets\sass\material-kit\_example-pages.scss" />
+    <Content Include="assets\sass\material-kit\_footers.scss" />
+    <Content Include="assets\sass\material-kit\_form.scss" />
+    <Content Include="assets\sass\material-kit\_images.scss" />
+    <Content Include="assets\sass\material-kit\_import-bs-less.scss" />
+    <Content Include="assets\sass\material-kit\_import-bs-sass.scss" />
+    <Content Include="assets\sass\material-kit\_info-areas.scss" />
+    <Content Include="assets\sass\material-kit\_inputs-size.scss" />
+    <Content Include="assets\sass\material-kit\_inputs.scss" />
+    <Content Include="assets\sass\material-kit\_labels.scss" />
+    <Content Include="assets\sass\material-kit\_lists.scss" />
+    <Content Include="assets\sass\material-kit\_mixins.scss" />
+    <Content Include="assets\sass\material-kit\_navbar.scss" />
+    <Content Include="assets\sass\material-kit\_pagination.scss" />
+    <Content Include="assets\sass\material-kit\_panels.scss" />
+    <Content Include="assets\sass\material-kit\_pills.scss" />
+    <Content Include="assets\sass\material-kit\_popups.scss" />
+    <Content Include="assets\sass\material-kit\_progress.scss" />
+    <Content Include="assets\sass\material-kit\_radios.scss" />
+    <Content Include="assets\sass\material-kit\_ripples.scss" />
+    <Content Include="assets\sass\material-kit\_sections.scss" />
+    <Content Include="assets\sass\material-kit\_shadows.scss" />
+    <Content Include="assets\sass\material-kit\_tabs.scss" />
+    <Content Include="assets\sass\material-kit\_togglebutton.scss" />
+    <Content Include="assets\sass\material-kit\_typography.scss" />
+    <Content Include="assets\sass\material-kit\_variables.scss" />
+    <Content Include="assets\sass\material-kit\_variables_bootstrap.scss" />
+    <Content Include="assets\sass\material-kit\_welljumbo.scss" />
+    <Content Include="assets\.DS_Store" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -140,12 +206,13 @@
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout1.cshtml" />
+    <Content Include="Views\Home\Index1.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -153,7 +220,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
