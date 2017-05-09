@@ -106,7 +106,6 @@
     <Content Include="assets\css\demo.css" />
     <Content Include="assets\css\material-kit.css" />
     <Content Include="assets\img\apple-icon.png" />
-    <Content Include="assets\img\arrow-down.png" />
     <Content Include="assets\img\city.jpg" />
     <Content Include="assets\img\favicon.png" />
     <Content Include="assets\js\bootstrap-datepicker.js" />
