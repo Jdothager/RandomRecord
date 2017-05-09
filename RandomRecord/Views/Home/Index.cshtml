@@ -42,33 +42,23 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="">Home</a>
+                <a class="navbar-brand" href="#home">Realistic Random Records</a>
             </div>
             <div class="collapse navbar-collapse" id="navigation-example">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="../components-documentation.html" target="_blank">
-                            Components
+                        <a href="#home">
+                            Home
                         </a>
                     </li>
                     <li>
-                        <a href="http://demos.creative-tim.com/material-kit-pro/presentation.html?ref=utp-freebie" target="_blank">
-                            <i class="material-icons">unarchive</i>
+                        <a href="#about">
+                            About
                         </a>
                     </li>
                     <li>
-                        <a href="https://twitter.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com/CreativeTim" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-                            <i class="fa fa-facebook-square"></i>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://www.instagram.com/CreativeTimOfficial" target="_blank" class="btn btn-simple btn-white btn-just-icon">
-                            <i class="fa fa-instagram"></i>
+                        <a href="#documentation">
+                            Documentation
                         </a>
                     </li>
                 </ul>
@@ -78,7 +68,7 @@
 
     <div class="wrapper">
         <div class="header header-filter" style="background-image: url('../../assets/img/city.jpg');">
-            <div class="container" ng-controller="AppController">
+            <div class="container" ng-controller="AppController" id="home">
                 <div class="row">
                     <div class="col-md-6">
                         <h1 class="title">Realistic Random Records</h1>
@@ -118,10 +108,15 @@
                         </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="scroll-arrow">
+                        <a href="#about"><img src="~/assets/img/arrow-down.png" /></a>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="main main-raised">
-            <div class="container">
+            <div class="container" id="about">
                 <div class="section text-center section-landing">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
@@ -161,7 +156,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="documentation">
+                    <div class="documentation" id="documentation">
                         <div class="row">
                             <div class="col-md-8 col-md-offset-2">
                                 <h2 class="title">API Documentation</h2>
@@ -172,42 +167,9 @@
                                 <div class="description">The default results return only a single record. &nbsp;Simply attach the quanitity parameter (?qty=n) to receive up to a max of 3000 records. &nbsp;It should look something like <a href="/api/record?qty=5" target="_blank">/api/record?qty=5</a></div>
                                 <h4 class="title">Are there any other options?</h4>
                                 <div class="description">Winter is Com*cough*cough*. &nbsp;Sorry. &nbsp;More features coming soon.</div>
+                                <h3 class="title">Anything else I should know?</h3>
+                                <div class="description">Yeah. &nbsp;The source code can be found at <a href="https://github.com/Jdothager/RandomRecords" target="_blank">Github</a>. &nbsp;Also, credit to <a href="http://presentation.creative-tim.com" target="_blank">Creative Tim</a> for the Bootstrap theme! &nbsp;Disclaimer: &nbsp;Any resemblance to actual persons, living or dead, is purely coincidental.</div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="section landing-section">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <h2 class="text-center title">Work with us</h2>
-                            <h4 class="text-center description">Divide details about your product or agency work into parts. Write a few lines about each one and contact us about any further collaboration. We will responde get back to you in a couple of hours.</h4>
-                            <form class="contact-form">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group label-floating">
-                                            <label class="control-label">Your Name</label>
-                                            <input type="email" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group label-floating">
-                                            <label class="control-label">Your Email</label>
-                                            <input type="email" class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group label-floating">
-                                    <label class="control-label">Your Messge</label>
-                                    <textarea class="form-control" rows="4"></textarea>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-4 col-md-offset-4 text-center">
-                                        <button class="btn btn-primary btn-raised">
-                                            Send Message
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -218,24 +180,13 @@
                 <nav class="pull-left">
                     <ul>
                         <li>
-                            <a href="http://www.creative-tim.com">
-                                Creative Tim
-                            </a>
+                            <a href="#home">Home</a>
                         </li>
                         <li>
-                            <a href="http://presentation.creative-tim.com">
-                                About Us
-                            </a>
+                            <a href="#about">About</a>
                         </li>
                         <li>
-                            <a href="http://blog.creative-tim.com">
-                                Blog
-                            </a>
-                        </li>
-                        <li>
-                            <a href="http://www.creative-tim.com/license">
-                                Licenses
-                            </a>
+                            <a href="#documentation">Documentation</a>
                         </li>
                     </ul>
                 </nav>

@@ -106,9 +106,9 @@
     <Content Include="assets\css\demo.css" />
     <Content Include="assets\css\material-kit.css" />
     <Content Include="assets\img\apple-icon.png" />
+    <Content Include="assets\img\arrow-down.png" />
     <Content Include="assets\img\bg2.jpeg" />
     <Content Include="assets\img\city.jpg" />
-    <Content Include="assets\img\examples\city.jpg" />
     <Content Include="assets\img\favicon.png" />
     <Content Include="assets\img\loading-bubbles.svg" />
     <Content Include="assets\js\bootstrap-datepicker.js" />
@@ -129,7 +129,6 @@
     <Content Include="assets\css\.DS_Store" />
     <Content Include="assets\css\material-kit.css.map" />
     <Content Include="assets\img\.DS_Store" />
-    <Content Include="assets\img\examples\.DS_Store" />
     <Content Include="assets\img\faces\.DS_Store" />
     <Content Include="assets\img\presentation\.DS_Store" />
     <Content Include="assets\img\sections\.DS_Store" />
