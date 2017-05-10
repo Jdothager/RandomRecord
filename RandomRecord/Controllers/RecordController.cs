@@ -1,8 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using RandomRecords.Models;
+using System.Collections.Generic;
 using System.Web.Http;
-using RandomRecords.Models;
-
-
 
 namespace RandomRecords.Controllers
 {
@@ -22,6 +20,5 @@ namespace RandomRecords.Controllers
 
             return Creator.GetRecords(qty);
         }
-
     }
 }

@@ -103,17 +103,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\bootstrap.min.css" />
-    <Content Include="assets\css\demo.css" />
     <Content Include="assets\css\material-kit.css" />
     <Content Include="assets\img\apple-icon.png" />
     <Content Include="assets\img\city.jpg" />
     <Content Include="assets\img\favicon.png" />
-    <Content Include="assets\js\bootstrap-datepicker.js" />
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\material-kit.js" />
     <Content Include="assets\js\material.min.js" />
-    <Content Include="assets\js\nouislider.min.js" />
     <Content Include="assets\sass\material-kit\.DS_Store" />
     <Content Include="assets\sass\material-kit\_carousel.scss" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -174,10 +171,6 @@
     <Content Include="assets\js\.DS_Store" />
     <Content Include="assets\.DS_Store" />
     <Content Include="assets\sass\.DS_Store" />
-    <Content Include="assets\img\sections\.DS_Store" />
-    <Content Include="assets\img\presentation\.DS_Store" />
-    <Content Include="assets\img\faces\.DS_Store" />
-    <Content Include="assets\img\examples\.DS_Store" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -214,9 +207,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Content\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

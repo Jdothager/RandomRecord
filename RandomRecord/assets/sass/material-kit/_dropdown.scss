@@ -6,7 +6,6 @@
         background-color: rgba(0, 0, 0, .12);
     }
 
-
     li > a{
         font-size: $mdb-dropdown-font-size;
         padding: 10px 20px;
@@ -17,7 +16,6 @@
         &:hover,
         &:focus {
           @include shadow-8dp();
-
         }
     }
 
@@ -54,5 +52,4 @@
             }
         }
     }
-
 }

@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
 namespace RandomRecords.Models
 {
     public class ResultCreator
@@ -123,7 +122,7 @@ namespace RandomRecords.Models
                 maleDataDict = CsvData.MaleFirst2000s;
                 maleTotalWeight = CsvData.MaleFirst2000sWeight;
             }
-            else if(birthYear >= 1990)
+            else if (birthYear >= 1990)
             {
                 femaleDataDict = CsvData.FemaleFirst1990s;
                 femaleTotalWeight = CsvData.FemaleFirst1990sWeight;
@@ -131,7 +130,7 @@ namespace RandomRecords.Models
                 maleDataDict = CsvData.MaleFirst1990s;
                 maleTotalWeight = CsvData.MaleFirst1990sWeight;
             }
-            else if(birthYear >= 1980)
+            else if (birthYear >= 1980)
             {
                 femaleDataDict = CsvData.FemaleFirst1980s;
                 femaleTotalWeight = CsvData.FemaleFirst1980sWeight;
@@ -139,7 +138,7 @@ namespace RandomRecords.Models
                 maleDataDict = CsvData.MaleFirst1980s;
                 maleTotalWeight = CsvData.MaleFirst1980sWeight;
             }
-            else if(birthYear >= 1970)
+            else if (birthYear >= 1970)
             {
                 femaleDataDict = CsvData.FemaleFirst1970s;
                 femaleTotalWeight = CsvData.FemaleFirst1970sWeight;
@@ -172,10 +171,10 @@ namespace RandomRecords.Models
 
         private void GetLastName(Record record)
         {
-           /* pass the Randomizer method the csv data for the last names as well as the total weight
-            * ->and set the value to the lastname field of the record
-            */
-          record.lastname = Randomizer(CsvData.LastNames, RandomObject.Next(0, CsvData.LastNamesWeight));
+            /* pass the Randomizer method the csv data for the last names as well as the total weight
+             * ->and set the value to the lastname field of the record
+             */
+            record.lastname = Randomizer(CsvData.LastNames, RandomObject.Next(0, CsvData.LastNamesWeight));
         }
 
         private void GetLocation(Record record)
@@ -265,14 +264,14 @@ namespace RandomRecords.Models
             // add areacode to phone number
             string selectedPhone = "(" + selectedAreaCode + ") ";
 
-            /* 
+            /*
             * nxx refers to the middle three numbers of a phone number:
             * (***) XXX-****
             * convention - allowed ranges:
             * [2-9] for the first digit, and [0-9] for both the second and third digits,
             * but the second digit and the third digit can not be the same,
             * example: not allowed -> (***) *11-****
-            * 
+            *
             * The last four allow [0-9]
             */
             bool nxxIsFound = false;

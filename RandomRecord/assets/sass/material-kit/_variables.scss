@@ -10,10 +10,8 @@ $mdb-text-color-primary: unquote("rgba(#{$rgb-black}, 0.87)") !default;
 $mdb-text-color-primary-hex: $black !default; // for contrast function in inverse
 $icon-color: rgba(0,0,0,0.5) !default;
 
-
 $mdb-label-color: unquote("rgba(#{$rgb-black}, 0.26)") !default;
 $mdb-label-color-toggle-focus: unquote("rgba(#{$rgb-black}, .54)") !default;
-
 
 //---
 // Converted bs variables
@@ -54,22 +52,17 @@ $body-bg: #EEEEEE !default;
 // Bootstrap Material Design variables start with mdb-
 $mdb-brand-inverse: $indigo !default;
 
-
 /* ANIMATION */
 $mdb-animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1) !default;
 $mdb-animation-curve-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1) !default;
 $mdb-animation-curve-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1) !default;
 $mdb-animation-curve-default: $mdb-animation-curve-fast-out-slow-in !default;
 
-
 //---
 // FIXME: Similar but not quite the same as Bootstrap variables
 // FIXME: these need to either a) be converted to $mdb- or b) converted to bs variables
 $contrast-factor: 40% !default;
 //---
-
-
-
 
 // --------------------
 // inputs
@@ -114,16 +107,12 @@ $mdb-input-border-radius-base:        0 !default;
 $mdb-input-border-radius-large:       0 !default;
 $mdb-input-border-radius-small:       0 !default;
 
-
 //** Default `.form-control` height
 $mdb-input-height-base:              ($mdb-input-line-height-computed + ($mdb-input-padding-base-vertical * 2) + 2) !default;
 //** Large `.form-control` height
 $mdb-input-height-large:             (ceil($mdb-input-font-size-large * $mdb-input-line-height-large) + ($mdb-input-padding-large-vertical * 2) + 2) !default;
 //** Small `.form-control` height
 $mdb-input-height-small:             (floor($mdb-input-font-size-small * $mdb-input-line-height-small) + ($mdb-input-padding-small-vertical * 2) + 2) !default;
-
-
-
 
 // Card
 $mdb-card-body-text: $mdb-text-color-primary !default;
@@ -164,10 +153,8 @@ $mdb-btn-font-size-lg: 14px !default;
 $mdb-btn-font-size-sm: 11px !default;
 $mdb-btn-font-size-xs: 10px !default;
 
-
 $mdb-btn-background-color: $body-bg; //transparent !default;
 $mdb-btn-background-color-text: $mdb-text-color-primary !default;
-
 
 $mdl-btn-border-radus: 2px !default;
 //$mdb-btn-primary-color: unquote("rgba(#{$rgb-grey-500}, 0.20)") !default;
@@ -184,9 +171,7 @@ $mdb-shadow-key-umbra-opacity: 0.2 !default;
 $mdb-shadow-key-penumbra-opacity: 0.14 !default;
 $mdb-shadow-ambient-shadow-opacity: 0.12 !default;
 
-
 $fancy-shadow: 0 13px 39px -10px rgba(0, 0, 0, 0.65), 0 1px 25px 0px rgba(0, 0, 0, 0.15);
-
 
 $general-transition-time:  300ms !default;
 

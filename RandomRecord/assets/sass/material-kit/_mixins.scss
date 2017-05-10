@@ -1,12 +1,9 @@
-
-
 // Placeholder text
 @mixin material-placeholder() {
   &::-moz-placeholder {@content; } // Firefox
   &:-ms-input-placeholder {@content; } // Internet Explorer 10+
   &::-webkit-input-placeholder  {@content; } // Safari and Chrome
 }
-
 
 // variations(unquote(""), background-color, #FFF);
 @mixin variations($component, $selector-suffix, $mdb-param-1, $color-default) {
@@ -147,7 +144,6 @@
 //
 
 @mixin generic-variations($component, $selector-suffix, $color-default, $mixin-name, $mdb-param-1) {
-
   //setup map to pass parameters (instead of the incredibly long-error-prone list for each and every @include)
   $args: (
           //extra: $selector-suffix,
@@ -159,7 +155,6 @@
   // bootstrap styles
   &#{$selector-suffix},
   &#{$component}-default#{$selector-suffix} {
-
     $args-extra: map-merge($args, (
             variation-color: $color-default,
             variation-color-text: $mdb-text-color-light
@@ -269,7 +264,6 @@
 // Mixins for buttons
 
 @mixin btn-styles($btn-color) {
-
     // remove this line if you want black shadows
     @include shadow-2dp-color($btn-color);
 
@@ -322,5 +316,4 @@
           color: $btn-color;
       }
   }
-
 }

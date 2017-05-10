@@ -1,5 +1,4 @@
 .nav-pills{
-
     > li {
         > a{
             line-height: $mdb-btn-font-size-base * 2;
@@ -31,7 +30,6 @@
                 @include shadow-big-color($brand-primary);
             }
         }
-
     }
 
     &.nav-pills-info{

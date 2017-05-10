@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using RandomRecord.Models;
+using System.Collections.Generic;
 using System.IO;
-using System.Web;
 using System.Text;
-using RandomRecord.Models;
+using System.Web;
 
 namespace RandomRecords.Models
 {
@@ -114,7 +114,6 @@ namespace RandomRecords.Models
             {
                 LastNames[row[0]] = int.Parse(row[1]);
             }
-
         }
 
         private Dictionary<Location, int> GetLocDict(string file)

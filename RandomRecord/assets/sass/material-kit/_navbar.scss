@@ -48,7 +48,6 @@
         background-color: transparent;
       }
 
-
       .material-icons,
       .fa{
             font-size: 20px;
@@ -238,7 +237,6 @@
   // SASS conversion note: please mirror any content change in _mixins-shared.scss navbar-variations-content
   @include navbar-variations(unquote(".navbar"), unquote(""), $brand-primary);
 
-
   &-inverse {
     background-color: $indigo;
   }
@@ -257,7 +255,6 @@
       border-radius: 0;
   }
   @media (max-width: $screen-md-max) {
-
     .navbar-brand {
       height: 50px;
       padding: 10px 15px;
