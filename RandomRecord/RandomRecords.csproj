@@ -110,7 +110,6 @@
     <Content Include="assets\js\material.min.js" />
     <Content Include="assets\sass\material-kit\.DS_Store" />
     <Content Include="assets\sass\material-kit\_carousel.scss" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="App_Data\LastNames.csv" />
     <Content Include="App_Data\ZipCityStateLatLongPop.csv" />
@@ -186,9 +185,6 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
