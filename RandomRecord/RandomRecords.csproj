@@ -105,7 +105,7 @@
     <Content Include="assets\css\material-kit.css" />
     <Content Include="assets\img\apple-icon.png" />
     <Content Include="assets\img\city.jpg" />
-    <Content Include="assets\img\favicon.png" />
+    <Content Include="assets\img\favicon.ico" />
     <Content Include="assets\js\material-kit.js" />
     <Content Include="assets\js\material.min.js" />
     <Content Include="assets\sass\material-kit\.DS_Store" />
